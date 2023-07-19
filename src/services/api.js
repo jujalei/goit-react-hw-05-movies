@@ -20,3 +20,36 @@ export const fetchTrendingToday = async () => {
     console.log(error);
   }
 };
+
+export const fetchFilmDetails = async filmId => {
+  try {
+    const response = await axios.get(`${BASE_URL}/movie/${filmId}`, options);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const fetchCast = async filmId => {
+  try {
+    const response = await axios.get(
+      `${BASE_URL}/movie/${filmId}/credits`,
+      options
+    );
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const fetchReview = async filmId => {
+  try {
+    const response = await axios.get(
+      `${BASE_URL}/movie/${filmId}/reviews`,
+      options
+    );
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+};

@@ -2,8 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { fetchTrendingToday } from 'services/api';
 
-const BASE_URL = 'https://api.themoviedb.org/3';
-
 const HomePage = () => {
   const [films, setFilms] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
