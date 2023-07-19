@@ -18,8 +18,6 @@ const ReviewFilm = () => {
         const response = await fetchReview(filmId);
         const review = response.results;
 
-        console.log(review);
-
         setReviewDetails(review);
       } catch (error) {
         setError(error.message);

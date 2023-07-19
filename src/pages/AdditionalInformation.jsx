@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import { NavLink, Route, Routes } from 'react-router-dom';
-import CastInfo from './CastInfo';
-import ReviewFilm from './ReviewFilm';
+
+const CastInfo = lazy(() => import('./CastInfo'));
+const ReviewFilm = lazy(() => import('./ReviewFilm'));
 
 const AdditionalInformation = () => {
   return (
@@ -15,10 +16,12 @@ const AdditionalInformation = () => {
           <NavLink to="review">Review</NavLink>
         </li>
       </ul>
-      <Routes>
-        <Route path="cast" element={<CastInfo />} />
-        <Route path="review" element={<ReviewFilm />} />
-      </Routes>
+      <Suspense fallback={'loading'}>
+        <Routes>
+          <Route path="cast" element={<CastInfo />} />
+          <Route path="review" element={<ReviewFilm />} />
+        </Routes>
+      </Suspense>
     </div>
   );
 };

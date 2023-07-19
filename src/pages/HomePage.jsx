@@ -30,31 +30,28 @@ const HomePage = () => {
 
   return (
     <div>
-      <h1>Trending films today</h1>
+      <h1 className="title">Trending today</h1>
       {error !== null && (
         <p>Oops, some error occured. Please, try again later. Error: {error}</p>
       )}
       {isLoading && 'Loading'}
-      {films.length > 0 &&
-        films.map(film => {
-          return (
-            <Link
-              className="film"
-              key={film.id}
-              to={`/movies/${film.id}`}
-              state={{ from: location }}
-            >
-              <div>
-                {/* <img
-                  src={`https://image.tmdb.org/t/p/original${film.poster_path}`}
-                  alt={film.title}
-                  width={295}
-                /> */}
-                <h3> {film.title}</h3>
-              </div>
-            </Link>
-          );
-        })}
+      <ul className="filmList">
+        {films.length > 0 &&
+          films.map(film => {
+            return (
+              <li key={film.id} className="filmItem">
+                <Link to={`/movies/${film.id}`} state={{ from: location }}>
+                  <img
+                    src={`https://image.tmdb.org/t/p/original${film.poster_path}`}
+                    alt={film.title}
+                    width={200}
+                  />
+                  <h3> {film.title}</h3>
+                </Link>
+              </li>
+            );
+          })}
+      </ul>
     </div>
   );
 };

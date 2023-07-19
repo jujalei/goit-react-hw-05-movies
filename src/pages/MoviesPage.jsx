@@ -43,9 +43,16 @@ export const MoviesPage = () => {
 
   return (
     <div>
-      <form onSubmit={handleSumbit}>
-        <input type="text" name="search" required />
-        <button type="submit">Search</button>
+      <form onSubmit={handleSumbit} className="form">
+        <input
+          className="searchForm-input"
+          type="text"
+          name="search"
+          required
+        />
+        <button type="submit" className="searchForm-button">
+          Search
+        </button>
       </form>
 
       {error !== null && (
@@ -55,26 +62,23 @@ export const MoviesPage = () => {
       )}
       {isLoading && 'loading'}
 
-      {films.length > 0 &&
-        films.map(film => {
-          return (
-            <Link
-              className="film"
-              key={film.id}
-              to={`/movies/${film.id}`}
-              state={{ from: location }}
-            >
-              <div>
-                {/* <img
-                  src={`https://image.tmdb.org/t/p/original${film.poster_path}`}
-                  alt={film.title}
-                  width={295}
-                /> */}
-                <h3> {film.title}</h3>
-              </div>
-            </Link>
-          );
-        })}
+      <ul className="filmList">
+        {films.length > 0 &&
+          films.map(film => {
+            return (
+              <li key={film.id} className="filmItem">
+                <Link to={`/movies/${film.id}`} state={{ from: location }}>
+                  <img
+                    src={`https://image.tmdb.org/t/p/original${film.poster_path}`}
+                    alt={film.title}
+                    width={200}
+                  />
+                  <h3> {film.title}</h3>
+                </Link>
+              </li>
+            );
+          })}
+      </ul>
     </div>
   );
 };
