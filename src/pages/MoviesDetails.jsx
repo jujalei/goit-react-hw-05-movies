@@ -58,7 +58,10 @@ const MoviesDetails = () => {
           />
 
           <p>
-            {' '}
+            <strong>User score:</strong> {filmDetails.vote_average}
+          </p>
+
+          <p>
             <strong>Overview:</strong> {filmDetails.overview}
           </p>
           <p>

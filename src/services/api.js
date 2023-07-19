@@ -53,3 +53,15 @@ export const fetchReview = async filmId => {
     console.log(error);
   }
 };
+
+export const fetchFilmName = async name => {
+  try {
+    const response = await axios.get(
+      `${BASE_URL}/search/movie?query=${name}`,
+      options
+    );
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+};

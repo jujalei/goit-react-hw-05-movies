@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { fetchTrendingToday } from 'services/api';
 
 const HomePage = () => {
   const [films, setFilms] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+
+  const location = useLocation();
 
   useEffect(() => {
     const fetchFilmsData = async () => {
@@ -36,7 +38,12 @@ const HomePage = () => {
       {films.length > 0 &&
         films.map(film => {
           return (
-            <Link className="film" key={film.id} to={`/movies/${film.id}`}>
+            <Link
+              className="film"
+              key={film.id}
+              to={`/movies/${film.id}`}
+              state={{ from: location }}
+            >
               <div>
                 {/* <img
                   src={`https://image.tmdb.org/t/p/original${film.poster_path}`}
