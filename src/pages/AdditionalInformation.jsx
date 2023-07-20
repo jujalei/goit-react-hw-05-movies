@@ -8,11 +8,11 @@ const AdditionalInformation = () => {
   return (
     <div>
       <h3>Additional information</h3>
-      <ul>
-        <li>
+      <ul className="additional">
+        <li className="additional-item">
           <NavLink to="cast">Cast</NavLink>
         </li>
-        <li>
+        <li className="additional-item">
           <NavLink to="review">Review</NavLink>
         </li>
       </ul>

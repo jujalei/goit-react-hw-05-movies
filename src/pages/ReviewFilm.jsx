@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchReview } from 'services/api';
 
+import { Loader } from 'components/Loader/Loader';
+
 const ReviewFilm = () => {
   const [reviewDetails, setReviewDetails] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -32,16 +34,17 @@ const ReviewFilm = () => {
   return (
     <div>
       {error !== null && (
-        <p className="c-error">
-          Oops, some error occured. Please, try again later. Error: {error}
-        </p>
+        <p>Oops, some error occured. Please, try again later. Error: {error}</p>
       )}
-      {isLoading && 'loading'}
+      {isLoading && <Loader />}
       {reviewDetails !== null && reviewDetails.length > 0 ? (
         <ul>
           {reviewDetails.map(review => (
             <li key={review.author}>
-              <p>Author: {review.author}</p>
+              <p>
+                {' '}
+                <strong>Author: {review.author}</strong>
+              </p>
               <p> {review.content}</p>
             </li>
           ))}

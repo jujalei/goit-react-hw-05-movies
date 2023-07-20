@@ -37,7 +37,9 @@ const MoviesDetails = () => {
 
   return (
     <div>
-      <Link to={backLinkHref.current}>Go back</Link>{' '}
+      <Link to={backLinkHref.current} className="back-button">
+        Go back
+      </Link>{' '}
       {error !== null && (
         <p className="c-error">
           Oops, some error occured. Please, try again later. Error: {error}
@@ -47,27 +49,30 @@ const MoviesDetails = () => {
       {filmDetails !== null && (
         <div>
           <h2>{filmDetails.title}</h2>
-          <img
-            src={
-              filmDetails.poster_path
-                ? `https://image.tmdb.org/t/p/original${filmDetails.poster_path}`
-                : defaultImg
-            }
-            width={250}
-            alt={`${filmDetails.title} poster`}
-          />
+          <div className="film-details">
+            <img
+              src={
+                filmDetails.poster_path
+                  ? `https://image.tmdb.org/t/p/original${filmDetails.poster_path}`
+                  : defaultImg
+              }
+              width={250}
+              alt={`${filmDetails.title} poster`}
+            />
+            <div>
+              <p>
+                <strong>User score:</strong> {filmDetails.vote_average}
+              </p>
 
-          <p>
-            <strong>User score:</strong> {filmDetails.vote_average}
-          </p>
-
-          <p>
-            <strong>Overview:</strong> {filmDetails.overview}
-          </p>
-          <p>
-            <strong>Genres:</strong>{' '}
-            {filmDetails.genres.map(genre => genre.name).join(', ')}
-          </p>
+              <p>
+                <strong>Overview:</strong> {filmDetails.overview}
+              </p>
+              <p>
+                <strong>Genres:</strong>{' '}
+                {filmDetails.genres.map(genre => genre.name).join(', ')}
+              </p>
+            </div>
+          </div>
         </div>
       )}
       <AdditionalInformation />

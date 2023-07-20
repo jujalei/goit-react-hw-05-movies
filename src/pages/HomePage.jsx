@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { fetchTrendingToday } from 'services/api';
 
+import { Loader } from 'components/Loader/Loader';
+
 const HomePage = () => {
   const [films, setFilms] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -34,7 +36,7 @@ const HomePage = () => {
       {error !== null && (
         <p>Oops, some error occured. Please, try again later. Error: {error}</p>
       )}
-      {isLoading && 'Loading'}
+      {isLoading && <Loader />}
       <ul className="filmList">
         {films.length > 0 &&
           films.map(film => {

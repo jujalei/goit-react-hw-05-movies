@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchCast } from 'services/api';
+import { Loader } from 'components/Loader/Loader';
 
 const CastInfo = () => {
   const [castDetails, setCastDetails] = useState(null);
@@ -35,13 +36,11 @@ const CastInfo = () => {
   return (
     <div>
       {error !== null && (
-        <p className="c-error">
-          Oops, some error occured. Please, try again later. Error: {error}
-        </p>
+        <p>Oops, some error occured. Please, try again later. Error: {error}</p>
       )}
-      {isLoading && 'loading'}
+      {isLoading && <Loader />}
       {castDetails !== null && (
-        <ul>
+        <ul className="filmList">
           {castDetails.map(actor => (
             <li key={actor.id}>
               <img
@@ -53,7 +52,9 @@ const CastInfo = () => {
                 width={250}
                 alt={`${actor.name} poster`}
               />
-              <p>{actor.name}</p>
+              <p>
+                <strong>{actor.name}</strong>
+              </p>
               <p>Character {actor.character}</p>
             </li>
           ))}

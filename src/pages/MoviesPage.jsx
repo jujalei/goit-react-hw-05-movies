@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import { fetchFilmName } from 'services/api';
+import { Loader } from 'components/Loader/Loader';
 
 export const MoviesPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -56,11 +57,9 @@ export const MoviesPage = () => {
       </form>
 
       {error !== null && (
-        <p className="c-error">
-          Oops, some error occured. Please, try again later. Error: {error}
-        </p>
+        <p>Oops, some error occured. Please, try again later. Error: {error}</p>
       )}
-      {isLoading && 'loading'}
+      {isLoading && <Loader />}
 
       <ul className="filmList">
         {films.length > 0 &&
