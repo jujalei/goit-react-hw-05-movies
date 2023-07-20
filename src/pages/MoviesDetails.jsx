@@ -42,7 +42,7 @@ const MoviesDetails = () => {
       </Link>{' '}
       {error !== null && (
         <p className="c-error">
-          Oops, some error occured. Please, try again later. Error: {error}
+          Oops, some error occurred. Please, try again later. Error: {error}
         </p>
       )}
       {isLoading && 'loading'}

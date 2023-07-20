@@ -11,6 +11,9 @@ const HomePage = () => {
 
   const location = useLocation();
 
+  const defaultImg =
+    'https://ireland.apollo.olxcdn.com/v1/files/0iq0gb9ppip8-UA/image;s=1000x700';
+
   useEffect(() => {
     const fetchFilmsData = async () => {
       try {
@@ -34,7 +37,9 @@ const HomePage = () => {
     <div>
       <h1 className="title">Trending today</h1>
       {error !== null && (
-        <p>Oops, some error occured. Please, try again later. Error: {error}</p>
+        <p>
+          Oops, some error occurred. Please, try again later. Error: {error}
+        </p>
       )}
       {isLoading && <Loader />}
       <ul className="filmList">
@@ -44,7 +49,11 @@ const HomePage = () => {
               <li key={film.id} className="filmItem">
                 <Link to={`/movies/${film.id}`} state={{ from: location }}>
                   <img
-                    src={`https://image.tmdb.org/t/p/original${film.poster_path}`}
+                    src={
+                      film.poster_path
+                        ? `https://image.tmdb.org/t/p/original${film.poster_path}`
+                        : defaultImg
+                    }
                     alt={film.title}
                     width={200}
                   />

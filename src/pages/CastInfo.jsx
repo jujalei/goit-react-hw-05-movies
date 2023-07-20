@@ -36,7 +36,9 @@ const CastInfo = () => {
   return (
     <div>
       {error !== null && (
-        <p>Oops, some error occured. Please, try again later. Error: {error}</p>
+        <p>
+          Oops, some error occurred. Please, try again later. Error: {error}
+        </p>
       )}
       {isLoading && <Loader />}
       {castDetails !== null && (

@@ -34,7 +34,9 @@ const ReviewFilm = () => {
   return (
     <div>
       {error !== null && (
-        <p>Oops, some error occured. Please, try again later. Error: {error}</p>
+        <p>
+          Oops, some error occurred. Please, try again later. Error: {error}
+        </p>
       )}
       {isLoading && <Loader />}
       {reviewDetails !== null && reviewDetails.length > 0 ? (
@@ -42,7 +44,6 @@ const ReviewFilm = () => {
           {reviewDetails.map(review => (
             <li key={review.author}>
               <p>
-                {' '}
                 <strong>Author: {review.author}</strong>
               </p>
               <p> {review.content}</p>
