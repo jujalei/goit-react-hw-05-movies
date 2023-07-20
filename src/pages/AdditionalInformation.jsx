@@ -1,6 +1,8 @@
 import React, { Suspense, lazy } from 'react';
 import { NavLink, Route, Routes } from 'react-router-dom';
 
+import { Loader } from 'components/Loader/Loader';
+
 const CastInfo = lazy(() => import('./CastInfo'));
 const ReviewFilm = lazy(() => import('./ReviewFilm'));
 
@@ -16,7 +18,7 @@ const AdditionalInformation = () => {
           <NavLink to="review">Review</NavLink>
         </li>
       </ul>
-      <Suspense fallback={'loading'}>
+      <Suspense fallback={<Loader />}>
         <Routes>
           <Route path="cast" element={<CastInfo />} />
           <Route path="review" element={<ReviewFilm />} />
